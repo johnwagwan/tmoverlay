@@ -1,0 +1,16 @@
+#!/sbin/runscript
+
+depend() {
+	need cgmanager
+	need dbus
+}
+start() {
+	ebegin "Starting LXCFS in /var/lib/lxcfs"
+	start-stop-daemon --start --exec /usr/bin/lxcfs --name lxcfs -- -s -o allow_other /var/lib/lxcfs
+	eend
+}
+stop() {
+	ebegin "Stopping LXCFS"
+	start-stop-daemon --stop --exec /usr/bin/lxcfs --name lxcfs
+	eend
+}
