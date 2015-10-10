@@ -6,7 +6,7 @@ depend() {
 }
 start() {
 	ebegin "Starting LXCFS in /var/lib/lxcfs"
-	start-stop-daemon --start --exec /usr/bin/lxcfs --name lxcfs -- -s -o allow_other /var/lib/lxcfs
+	start-stop-daemon --start --background --exec /usr/bin/lxcfs --name lxcfs -- -s -f -o allow_other /var/lib/lxcfs
 	eend
 }
 stop() {
